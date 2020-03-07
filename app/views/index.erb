@@ -1,0 +1,4 @@
+<h2>List of <%= @all.first.class.name.pluralize %></h2>
+<% @artist.songs.each do |instance| %>
+  <a href="/<%= instance.class.name.downcase.pluralize %>/<%= instance.slug %>"><%= instance.name %></a><br>
+<%end%>
