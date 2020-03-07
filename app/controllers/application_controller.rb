@@ -57,6 +57,7 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/songs' do
+    @song = Song.find(params[:id])
     @song.update(params[:song])
     if !params[:artist][:name].empty?
       if !(artist = Artist.find_by name: params[:artist][:name])
