@@ -39,7 +39,9 @@ class ApplicationController < Sinatra::Base
       @song.artist = artist
     end
     if !params[:genre][:name].empty?
-      genre = Genre.create(name: params[:genre][:name])
+      if !(genre = Genre.find_by name: params[:genre][:name])
+        genre = Genre.create(name: params[:genre][:name])
+      end
       @song.genres << genre
     end
     @song.save
