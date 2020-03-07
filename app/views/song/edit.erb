@@ -4,6 +4,7 @@
 <h2>Current Genre: <%= @song.genre.name %></h2>
 
 <form action='/songs' method='POST'>
+  <input id="hidden" type="hidden" name="_method" value="patch">
   <label for="Name">Song Name: </label>
   <input type='text' id="Name" name='song[name]'>
 
@@ -25,5 +26,5 @@
    <label for="genre_name">Genre Name: </label>
    <input type='text' id="genre_name" name='genre[name]'><br><br>
 
-   <input type='submit' id="Create" value='Create'>
+   <input type='submit' id="Update" value='Update'>
 </form>
