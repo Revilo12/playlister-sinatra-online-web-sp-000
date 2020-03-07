@@ -18,6 +18,31 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get 'songs/new' do
+    erb :new 
+  end
+
+  post '/songs' do
+    @song = Song.create(params[:song])
+    if !params[:artist][:name].empty?
+      @song.artist = Artist.create(name: params[:artist][:name])
+    end
+    if !params[:genre][:name].empty?
+      @song.genres << Genre.create(name: params[:genre][:name])
+    end
+    redirect '/songs/#{@song.slug}'
+  end
+
+  get '/songs/:slug/edit' do
+    @song = Song.find_by_slug(params[:slug])
+    erb :edit
+  end
+
+  patch '/songs' do
+    @song = Song.find_by_slug(params[:slug])
+    @song.update(params[:song])
+  end
+
   get '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
     erb :'song/show'
