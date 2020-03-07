@@ -33,7 +33,8 @@ class ApplicationController < Sinatra::Base
       @song.genres << Genre.create(name: params[:genre][:name])
     end
     @song.save
-    erb :'song/show'
+    flash[:message] = "Successfully created song."
+    redirect to("/songs/#{@song.slug}")
   end
 
   get '/songs/:slug/edit' do
