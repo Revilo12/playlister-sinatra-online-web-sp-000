@@ -6,7 +6,7 @@
  <h2>Artist</h2>
   <h3>Existing Artist</h3>
   <% @artists.each do |artist| %>
-    <input type="radio" id="<%= artist.name %>" value="<%= artist.id %>" name="song[artist_id]"><%= artist.name %></input>
+    <input type="radio" id="<%= artist.id %>" value="<%= artist.id %>" name="song[artist_id]"><%= artist.name %></input>
   <%end%>
   <h3>New Artist</h3>
   <label for="artist_name">Artist Name: </label>
