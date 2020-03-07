@@ -3,6 +3,10 @@ class ApplicationController < Sinatra::Base
   set :session_secret, "my_application_secret"
   set :views, Proc.new { File.join(root, "../views/") }
 
+  get 'songs/new' do
+    erb :new
+  end
+
   get '/artists' do
     @all = Artist.all
     erb :index
@@ -17,11 +21,6 @@ class ApplicationController < Sinatra::Base
     @all = Song.all
     erb :index
   end
-
-  get 'songs/new' do
-    erb :new
-  end
-
   post '/songs' do
     @song = Song.create(params[:song])
     if !params[:artist][:name].empty?
