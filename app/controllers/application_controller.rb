@@ -13,8 +13,8 @@ class ApplicationController < Sinatra::Base
     erb :'artist/show'
   end
 
-  get '/artists' do
-    @all = Artist.all
+  get '/songs' do
+    @all = Song.all
     erb :index
   end
 
@@ -23,14 +23,14 @@ class ApplicationController < Sinatra::Base
     erb :'songs/show'
   end
 
-  get '/songs' do
-    @all = Song.all
+  get '/genres' do
+    @all = Genre.all
     erb :index
   end
 
-  get '/artists/:slug' do
-    @artist = Artist.find_by_slug(params[:slug])
-    erb :'artist/show'
+  get '/genres/:slug' do
+    @genre = Genre.find_by_slug(params[:slug])
+    erb :'genre/show'
   end
 
 
