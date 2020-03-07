@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/artists/:slug' do
-    @artist = Artist.fing_by_slug(params[:slug])
+    @artist = Artist.find_by_slug(params[:slug])
     erb :'artist/show'
   end
 
