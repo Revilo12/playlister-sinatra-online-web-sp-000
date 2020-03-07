@@ -37,7 +37,8 @@ class ApplicationController < Sinatra::Base
       @song.artist = artist
     end
     if !params[:genre][:name].empty?
-      @song.genres << Genre.create(name: params[:genre][:name])
+      genre = Genre.create(name: params[:genre][:name])
+      @song.genres << genre
     end
     @song.save
     flash[:message] = "Successfully created song."
