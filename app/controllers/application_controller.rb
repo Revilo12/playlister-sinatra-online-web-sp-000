@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
     if !params[:genre][:name].empty?
       @song.genres << Genre.create(name: params[:genre][:name])
     end
-    redirect '/songs/#{@song.slug}'
+    redirect "/songs/#{@song.slug}"
   end
 
   get '/songs/:slug/edit' do
