@@ -32,7 +32,6 @@ class ApplicationController < Sinatra::Base
     if !params[:genre][:name].empty?
       @song.genres << Genre.create(name: params[:genre][:name])
     end
-    binding.pry
     @song.save
     erb :'song/show'
   end
