@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get 'songs/new' do
-    erb :new 
+    erb :new
   end
 
   post '/songs' do
