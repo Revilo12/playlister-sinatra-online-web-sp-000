@@ -3,6 +3,10 @@ class ApplicationController < Sinatra::Base
   set :session_secret, "my_application_secret"
   set :views, Proc.new { File.join(root, "../views/") }
 
+  configure do
+    enable :sessions
+  end
+
   get '/songs/new' do
     @artists = Artist.all
     @genres = Genre.all
