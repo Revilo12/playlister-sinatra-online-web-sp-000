@@ -1,0 +1,29 @@
+<h1>Update a Song</h1>
+<h2>Current Name: <%= @song.name %></h2>
+<h2>Current Artist: <%= @song.artist.name %></h2>
+<h2>Current Genre: <%= @song.genre.name %></h2>
+
+<form action='/songs' method='POST'>
+  <label for="Name">Song Name: </label>
+  <input type='text' id="Name" name='song[name]'>
+
+ <h2>Artist</h2>
+  <h3>Existing Artist</h3>
+  <% @artists.each do |artist| %>
+    <input type="radio" id="<%= artist.id %>" value="<%= artist.id %>" name="song[artist_id]"><%= artist.name %></input>
+  <%end%>
+  <h3>New Artist</h3>
+  <label for="artist_name">Artist Name: </label>
+  <input type='text' id="artist_name" name='artist[name]'>
+
+  <h2>Genres</h2>
+   <h3>Existing Genre</h3>
+   <% @genres.each do |genre| %>
+     <input type="checkbox" id="<%= genre.name %>" value="<%= genre.id %>" name="song[genre_ids][]"><%= genre.name %></input>
+   <%end%>
+   <h3>New Genre</h3>
+   <label for="genre_name">Genre Name: </label>
+   <input type='text' id="genre_name" name='genre[name]'><br><br>
+
+   <input type='submit' id="Create" value='Create'>
+</form>
