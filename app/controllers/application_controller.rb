@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
     end
     binding.pry
     @song.save
-    redirect "/songs/#{@song.slug}"
+    erb :'song/show'
   end
 
   get '/songs/:slug/edit' do
