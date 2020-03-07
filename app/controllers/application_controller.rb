@@ -33,7 +33,8 @@ class ApplicationController < Sinatra::Base
   post '/songs' do
     @song = Song.create(params[:song])
     if !params[:artist][:name].empty?
-      @song.artist = Artist.create(name: params[:artist][:name])
+      artist = Artist.create(name: params[:artist][:name])
+      @song.artist = artist
     end
     if !params[:genre][:name].empty?
       @song.genres << Genre.create(name: params[:genre][:name])
