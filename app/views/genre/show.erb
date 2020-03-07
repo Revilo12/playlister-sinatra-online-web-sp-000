@@ -1,0 +1,9 @@
+<h1><%=@genre.name%></h1>
+<h2>List of Songs</h2>
+<% @genre.songs.each do |instance| %>
+  <a href="/<%= instance.class.name.downcase.pluralize %>/<%= instance.slug %>"><%= instance.name %></a><br>
+<%end%>
+<h2>List of Artists</h2>
+<% @genre.artists.each do |instance| %>
+  <a href="/<%= instance.class.name.downcase.pluralize %>/<%= instance.slug %>"><%= instance.name %></a><br>
+<%end%>
