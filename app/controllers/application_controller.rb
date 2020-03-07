@@ -7,55 +7,56 @@ class ApplicationController < Sinatra::Base
     erb :'song/new'
   end
 
-  get '/artists' do
-    @all = Artist.all
-    erb :index
-  end
-
-  get '/artists/:slug' do
-    @artist = Artist.find_by_slug(params[:slug])
-    erb :'artist/show'
-  end
-
-  get '/songs' do
-    @all = Song.all
-    erb :index
-  end
-  post '/songs' do
-    @song = Song.create(params[:song])
-    if !params[:artist][:name].empty?
-      @song.artist = Artist.create(name: params[:artist][:name])
-    end
-    if !params[:genre][:name].empty?
-      @song.genres << Genre.create(name: params[:genre][:name])
-    end
-    redirect '/songs/#{@song.slug}'
-  end
-
-  get '/songs/:slug/edit' do
-    @song = Song.find_by_slug(params[:slug])
-    erb :edit
-  end
-
-  patch '/songs' do
-    @song = Song.find_by_slug(params[:slug])
-    @song.update(params[:song])
-  end
-
-  get '/songs/:slug' do
-    @song = Song.find_by_slug(params[:slug])
-    erb :'song/show'
-  end
-
-  get '/genres' do
-    @all = Genre.all
-    erb :index
-  end
-
-  get '/genres/:slug' do
-    @genre = Genre.find_by_slug(params[:slug])
-    erb :'genre/show'
-  end
+  # get '/artists' do
+  #   @all = Artist.all
+  #   erb :index
+  # end
+  # 
+  # get '/artists/:slug' do
+  #   @artist = Artist.find_by_slug(params[:slug])
+  #   erb :'artist/show'
+  # end
+  # 
+  # get '/songs' do
+  #   @all = Song.all
+  #   erb :index
+  # end
+  # 
+  # post '/songs' do
+  #   @song = Song.create(params[:song])
+  #   if !params[:artist][:name].empty?
+  #     @song.artist = Artist.create(name: params[:artist][:name])
+  #   end
+  #   if !params[:genre][:name].empty?
+  #     @song.genres << Genre.create(name: params[:genre][:name])
+  #   end
+  #   redirect '/songs/#{@song.slug}'
+  # end
+  # 
+  # get '/songs/:slug/edit' do
+  #   @song = Song.find_by_slug(params[:slug])
+  #   erb :edit
+  # end
+  # 
+  # patch '/songs' do
+  #   @song = Song.find_by_slug(params[:slug])
+  #   @song.update(params[:song])
+  # end
+  # 
+  # get '/songs/:slug' do
+  #   @song = Song.find_by_slug(params[:slug])
+  #   erb :'song/show'
+  # end
+  # 
+  # get '/genres' do
+  #   @all = Genre.all
+  #   erb :index
+  # end
+  # 
+  # get '/genres/:slug' do
+  #   @genre = Genre.find_by_slug(params[:slug])
+  #   erb :'genre/show'
+  # end
 
 
 
