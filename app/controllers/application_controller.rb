@@ -13,6 +13,26 @@ class ApplicationController < Sinatra::Base
     erb :'artist/show'
   end
 
+  get '/artists' do
+    @all = Artist.all
+    erb :index
+  end
+
+  get '/songs/:slug' do
+    @songs = Song.find_by_slug(params[:slug])
+    erb :'songs/show'
+  end
+
+  get '/songs' do
+    @all = Song.all
+    erb :index
+  end
+
+  get '/artists/:slug' do
+    @artist = Artist.find_by_slug(params[:slug])
+    erb :'artist/show'
+  end
+
 
 
   # get '/:class_name' do
